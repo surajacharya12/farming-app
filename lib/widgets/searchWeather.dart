@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:farmer_app/widgets/weather/screens/weather_screen/weather_screen.dart';
+import 'package:farmer_app/widgets/weather/screens/search_screen.dart';
+import 'package:farmer_app/widgets/weather/screens/settings_screen.dart';
+import 'package:farmer_app/widgets/weather/screens/forecast_report_screen.dart';
 
-class BuildSearchWidget extends StatelessWidget {
+class BuildSearchWidget extends StatefulWidget {
   const BuildSearchWidget({super.key});
 
   static final List<NavigationDestination> _destination = [
@@ -17,13 +21,22 @@ class BuildSearchWidget extends StatelessWidget {
     NavigationDestination(
       icon: Icon(Icons.wb_sunny_outlined),
       selectedIcon: Icon(Icons.sunny),
-      label: 'sunny',
+      label: 'weather forecast',
     ),
-    NavigationDestination(
-      icon: Icon(Icons.settings_outlined),
-      selectedIcon: Icon(Icons.settings),
-      label: 'settings',
-    ),
+  ];
+
+  @override
+  State<BuildSearchWidget> createState() => _BuildSearchWidgetState();
+}
+
+class _BuildSearchWidgetState extends State<BuildSearchWidget> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _screens = const [
+    WeatherScreen(),
+    SearchScreen(),
+    ForecastReportScreen(),
+    SettingsScreen(),
   ];
 
   @override
@@ -31,29 +44,26 @@ class BuildSearchWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text('Weather'),
+        title: Text(BuildSearchWidget._destination[_selectedIndex].label),
         actions: [
           PopupMenuButton<int>(
             onSelected: (int index) {
-              // Add your navigation logic here
-              // You can use the index to navigate or perform actions
+              setState(() {
+                _selectedIndex = index;
+              });
             },
             itemBuilder: (BuildContext context) {
               return List.generate(
-                _destination.length,
+                BuildSearchWidget._destination.length,
                 (index) => PopupMenuItem<int>(
                   value: index,
                   child: Row(
                     children: [
-                      _destination[index].icon,
-                      SizedBox(
-                        width: 10,
-                      ), // Optional space between icon and label
+                      BuildSearchWidget._destination[index].icon,
+                      const SizedBox(width: 10),
                       Text(
-                        _destination[index].label,
-                        style: TextStyle(
-                          color: Colors.black,
-                        ), // Set text color to black
+                        BuildSearchWidget._destination[index].label,
+                        style: const TextStyle(color: Colors.black),
                       ),
                     ],
                   ),
@@ -63,7 +73,9 @@ class BuildSearchWidget extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(child: Text('Content goes here')),
+
+      // 👇 Only the body changes, app bar stays
+      body: _screens[_selectedIndex],
     );
   }
 }

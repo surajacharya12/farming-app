@@ -1,20 +1,25 @@
 // lib/main.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart'; // ✅ Import Riverpod
 import 'package:farmer_app/screen/login.dart';
 import 'package:farmer_app/SQLite/sqlite.dart';
 import 'package:farmer_app/screen/home.dart';
-import 'package:farmer_app/widgets/language.dart'; // Import the language helper
+import 'package:farmer_app/widgets/language.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize the database and insert dummy data
   final dbHelper = DatabaseHelper();
   await dbHelper.initDB();
   await dbHelper.insertDummyData();
 
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      // ✅ Wrap the app with ProviderScope
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -25,7 +30,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  Locale _locale = const Locale('en', 'US'); // Default locale
+  Locale _locale = const Locale('en', 'US');
 
   void setLocale(Locale newLocale) {
     setState(() {
@@ -42,8 +47,8 @@ class MyAppState extends State<MyApp> {
           seedColor: const Color.fromARGB(255, 21, 200, 27),
         ),
       ),
-      locale: _locale, // Set the locale here
-      home: LoginScreen(),
+      locale: _locale,
+      home: const LoginScreen(),
     );
   }
 }

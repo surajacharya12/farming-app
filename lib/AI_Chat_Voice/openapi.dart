@@ -1,3 +1,2 @@
 const openAIAPIKey =
-    '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';
-const openAIAPIUrl = 'https://api.openai.com/v1/chat/completions';
+    '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';

@@ -10,17 +10,23 @@ class Farmerdiscussion extends StatelessWidget {
         title: const Text('Farmer Discussion'),
         backgroundColor: Colors.green,
       ),
-      body: ListView.builder(
-        itemCount: 10, // Replace with your data length
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('Discussion Topic $index'),
-            subtitle: Text('Discussion details for topic $index'),
-            onTap: () {
-              // Handle tap event
-            },
-          );
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10, // Replace with your data length
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text('Discussion Topic $index'),
+                  subtitle: Text('Discussion details for topic $index'),
+                  onTap: () {
+                    // Handle tap event
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

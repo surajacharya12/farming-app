@@ -120,7 +120,7 @@ class _VoiceState extends State<Voice> {
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: Text(
                       generatedContent == null
-                          ? 'Good Morning, what task can I do for you?'
+                          ? 'what task can I do for you?'
                           : generatedContent!,
                       style: TextStyle(
                         fontFamily: 'Cera Pro',
