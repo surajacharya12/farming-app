@@ -217,7 +217,7 @@ class _ResourcesState extends State<Resources> {
                                   borderRadius: BorderRadius.circular(8),
                                   child: Image.network(
                                     step['picture'],
-                                    height: 100,
+                                    height: 80,
                                     width: double.infinity,
                                     fit: BoxFit.cover,
                                   ),
