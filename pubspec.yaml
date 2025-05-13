@@ -1,0 +1,59 @@
+name: krishi_sathi
+description: "A new Flutter project."
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  sqflite: ^2.0.0+1
+  path: ^1.8.0
+  path_provider: ^2.0.11
+  path_provider_platform_interface: ^2.0.2
+  image_picker: ^1.1.2
+  flutter_bs_ad_calendar: ^1.0.4
+  geolocator: ^14.0.0 # Add geolocator for GPS tracking
+  dio: ^5.8.0+1
+  flutter_riverpod: ^2.6.1
+  jiffy: ^6.2.1
+  speech_to_text: ^7.0.0
+  permission_handler: ^11.0.1
+  deepgram_speech_to_text: ^3.0.3
+  flutter_tts: ^4.2.2
+  animate_do: ^4.2.0
+  nepali_english_calendar: ^1.0.1+1
+  horizontal_calendar_plus: ^0.0.5
+
+  image: ^3.3.0
+  file_picker: ^10.1.8
+  flutter_pdfview: ^1.4.0+1
+  pdfx: ^2.9.1
+  flutter_chat_ui: ^1.6.15
+  #google_maps_flutter: 2.5.0
+
+  #ßtflite_v2: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/market/
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/
+    - assets/sounds/
+    - assets/model/
